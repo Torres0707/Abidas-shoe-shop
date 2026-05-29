@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Torres Zhao Ning CHAN，Siang Chai CHUNG">
+	<meta name="description" content="Online shoe retailers specializing in other sports brands.">
+	<meta name="keywords" content="Abidas, Men, Women, Kids, high-quality, authentic, most competitively priced">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Abidas Shoes</title>
+	<script>
+		function validate_form(event) {
+			event.preventDefault();
+
+			let isValid1 = false;
+			let isValid2 = false;
+			let isValid3 = false;
+			let isValid4 = false;
+			let isValid5 = false;
+			let isValid6 = false;
+
+			var name = document.getElementById("name").value;
+			var email = document.getElementById("email").value;
+			var phone_number = document.getElementById("phone_number").value;
+			var male = document.getElementById("male").checked;
+			var female = document.getElementById("female").checked;
+			var men = document.getElementById("men").checked;
+			var women = document.getElementById("women").checked;
+			var kid = document.getElementById("kid").checked;
+			var other = document.getElementById("other").checked;
+			var feedback = document.getElementById("feedback").value;
+
+			document.getElementById("msg1").innerHTML="";
+			document.getElementById("msg2").innerHTML="";
+			document.getElementById("msg3").innerHTML="";
+			document.getElementById("msg4").innerHTML="";
+			document.getElementById("msg5").innerHTML="";
+			document.getElementById("msg6").innerHTML="";
+
+			var email_filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+          	var phone_number_filter = /^\d{10,11}$/;
+
+			if (name == "") {
+				document.getElementById("msg1").innerHTML="Please enter your user name.";
+			} else {
+				isValid1 = true;
+			}
+
+			if (email == "") {
+            	document.getElementById("msg2").innerHTML="Please enter your email address.";
+          	} else if (!email_filter.test(email)) {
+            	document.getElementById("msg2").innerHTML="Please enter a valid email add.";
+          	} else {
+				isValid2 = true;
+			}
+
+			if (phone_number == "") {
+				document.getElementById("msg3").innerHTML="Please enter your phone number.";
+			} else if (!phone_number_filter.test(phone_number)) {
+				document.getElementById("msg3").innerHTML="Phone number must be 10 or 11 digits.";
+			} else {
+				isValid3 = true;
+			}
+
+			if (male == "" && female == "") {
+				document.getElementById("msg4").innerHTML="Please choose your gender.";
+			} else {
+				isValid4 = true;
+			}
+
+			if (men == "" && women == "" && kid == "" && other == "") {
+				document.getElementById("msg5").innerHTML="Please choose the product.";
+			} else {
+				isValid5 = true;
+			}
+
+			if (feedback == "") {
+				document.getElementById("msg6").innerHTML="Please write your feedback.";
+			} else {
+				isValid6 = true;
+			}
+
+			if (isValid1 == true && isValid2 == true && isValid3 == true && isValid4 == true && isValid5 == true && isValid6 == true) {
+				alert("Form submitted.");
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<header>
+		<img src="images/Abidas.png" alt="Abidas logo">
+		<nav class="menu">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li class="dropdown">
+					<a href="#">Shoes</a>
+					<ul class="dropdown-menu">
+						<li><a href="men.html">Men</a></li>
+						<li><a href="women.html">Women</a></li>
+						<li><a href="kid.html">Kids</a></li>
+					</ul>
+				</li>
+				<li><a href="about.html">About Us</a></li>
+				<li><a href="feedback.html">Feedback</a></li>
+			</ul>
+		</nav>
+		<a href="AddToCart.html">
+			<img src="images/Add_to_cart.jpg" alt="cart" class="AddToCart_image">
+		</a>
+	</header>
+
+	<hr>
+	<form name="feedback" method="get" action="mailto:haroldtingzhongqing@gmail.com">
+		<fieldset>
+			<legend>Feedback Form</legend>
+			<table>
+				<tr>
+					<td><label for="name">Name:</label></td>
+					<td>
+						<input type="text" name="name" size="40" maxlength="20" placeholder="Please include your First name and Last name" id="name" required>
+						<p class="error" id="msg1"></p>
+					</td>
+				</tr>
+
+				<tr>
+					<td><label for="email">Email:</label></td>
+					<td>
+						<input type="email" name="email" placeholder="johndoe@gmail.com" id="email" required>
+						<p class="error" id="msg2"></p>
+					</td>
+				</tr>
+
+				<tr>
+					<td><label for="phone_number">Phone number:</label></td>
+					<td>
+						<input type="tel" name="phone number" id="phone_number" placeholder="0123456789" required>
+						<p class="error" id="msg3"></p>
+					</td>
+				</tr>
+
+				<tr>
+					<td>Gender:</td>
+					<td>
+						<input type="radio" name="gender" value="male" id="male" required>
+						<label for="male">Male</label>
+
+						<input type="radio" name="gender" value="female" id="female">
+						<label for="female">Female</label>
+
+						<p class="error" id="msg4"></p>
+					</td>
+				</tr>
+
+				<tr>
+					<td>Product:</td>
+					<td>
+						<input type="checkbox" name="product" value="men" id="men">
+						<label for="men">Men</label>
+
+						<input type="checkbox" name="product" value="women" id="women">
+						<label for="women">Women</label>
+
+						<input type="checkbox" name="product" value="kid" id="kid">
+						<label for="kid">Kid</label>
+
+						<input type="checkbox" name="product" value="other" id="other">
+						<label for="other">Other</label>
+
+						<p class="error" id="msg5"></p>
+					</td>
+				</tr>
+
+				<tr>
+					<td><label for="feedback">Feedback:</label></td>
+					<td>
+						<textarea name="feedback" rows="3" cols="40" id="feedback" required></textarea>
+						<p class="error" id="msg6"></p>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+
+		<p>
+			<button type="submit" name="submit" class="submit-button" onclick="validate_form(event)">Submit</button>
+		</p>
+	</form>
+	<br>
+
+	<footer>
+		<hr>
+		<div class="footer_top">
+			<div class="Contact_us">
+				<p class="contact_us">Contact Us</p>
+		        <p class="contact_us_content">
+		        	<strong>Email: </strong> haroldtingzhongqing@gmail.com<br>
+		        	chungsiangchai470@gmail.con<br>
+			        <strong>Phone: </strong> +60182026677<br>
+			        +60105938809<br>
+			        <strong>Address: </strong> Jalan Simpang Tiga, 93350 Kuching, Sarawak
+			    </p>
+			</div>
+		
+			<div class="Product">
+				<p class="product">Product</p>
+				<ul class="product_content">
+					<li><a href="men.html">Men</a></li>
+					<li><a href="women.html">Women</a></li>
+					<li><a href="kid.html">Kid</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<hr>
+
+		<div class="footer_bottom">
+			<a href="about.html" class="copyright">@Group 6|Last updated: 1//6/2026</a>
+		</div>
+	</footer>
+</body>
+</html>

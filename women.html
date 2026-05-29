@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Torres Zhao Ning CHAN，Siang Chai CHUNG">
+	<meta name="description" content="Online shoe retailers specializing in other sports brands.">
+	<meta name="keywords" content="Abidas, Men, Women, Kids, high-quality, authentic, most competitively priced">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Abidas Shoes</title>
+</head>
+
+<body>
+	<script>
+		function AddToCart(image, name, price) {
+			let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+			cart.push({
+		        image: image,
+		        name: name,
+		        price: price
+		    });
+
+		    localStorage.setItem("cart", JSON.stringify(cart));
+
+		    alert("Added to cart!");
+		}
+	</script>
+
+	<header>
+		<img src="images/Abidas.png" alt="Abidas logo">
+		<nav class="menu">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li class="dropdown">
+					<a href="#">Shoes</a>
+
+					<ul class="dropdown-menu">
+						<li><a href="men.html">Men</a></li>
+						<li><a href="women.html">Women</a></li>
+						<li><a href="kid.html">Kids</a></li>
+					</ul>
+				</li>
+				<li><a href="about.html">About Us</a></li>
+				<li><a href="feedback.html">Feedback</a></li>										
+			</ul>
+		</nav>
+		<a href="AddToCart.html">
+			<img src="images/Add_to_cart.jpg" alt="cart" class="AddToCart_image">
+		</a>
+	</header>
+
+	<article>
+		<hr>
+		<h1 class="promotion">Women Shoes</h1>
+
+		<div class="Promotion">
+			<img src="images/women_shoes1.jpeg" alt="Grand Court 2.0">
+			<h2>Grand Court 2.0</h2>
+			<p>RM 299</p>
+			<button class = "AddToCart" onclick="AddToCart('women_shoes1.jpeg', 'Grand Court 2.0', 'RM299')">Add to Cart</button>
+		</div>
+
+		<div class="Promotion">
+			<img src="images/women_shoes2.jpeg" alt="Galaxy 6">
+			<h2>Galaxy 6</h2>
+			<p>RM 399</p>
+			<button class="AddToCart" onclick="AddToCart('women_shoes2.jpeg', 'Galaxy 6', 'RM399')">Add to Cart</button>
+		</div>
+
+		<div class="Promotion">				
+			<img src="images/women_shoes3.jpeg" alt="Forum Low CL Shoes Cloud">
+			<h2>Forum Low CL Shoes Cloud</h2>
+			<p>Rm 499</p>
+			<button class="AddToCart" onclick="AddToCart('women_shoes3.jpeg', 'Forum Low CL Shoes Cloud', 'RM499')">Add to Cart</button>
+		</div>
+
+		<div class="Promotion">
+			<img src="images/women_shoes4.jpeg" alt="Galaxy 7">
+			<h2>Galaxy 7</h2>
+			<p>RM 699</p>	 
+			<button class="AddToCart" onclick="AddToCart('women_shoes4.jpeg', ' Galaxy 7', 'RM699')">Add to Cart</button>
+		</div>
+			
+		<br>
+	</article>
+
+	<footer>
+		<hr>
+		<div class="footer_top">
+			<div class="Contact_us">
+				<p class="contact_us">Contact Us</p>
+		        <p class="contact_us_content">
+		        	<strong>Email: </strong> haroldtingzhongqing@gmail.com<br>
+		        	chungsiangchai470@gmail.con<br>
+			        <strong>Phone: </strong> +60182026677<br>
+			        +60105938809<br>
+			        <strong>Address: </strong> Jalan Simpang Tiga, 93350 Kuching, Sarawak
+			    </p>
+			</div>
+		
+			<div class="Product">
+				<p class="product">Product</p>
+				<ul class="product_content">
+					<li><a href="men.html">Men</a></li>
+					<li><a href="women.html">Women</a></li>
+					<li><a href="kid.html">Kid</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<hr>
+
+		<div class="footer_bottom">
+			<a href="about.html" class="copyright">@Group 6|Last updated: 1//6/2026</a>
+		</div>
+	</footer>
+</body>
+</html>

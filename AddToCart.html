@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Torres Zhao Ning CHAN，Siang Chai CHUNG">
+	<meta name="description" content="Online shoe retailers specializing in other sports brands.">
+	<meta name="keywords" content="Abidas, Men, Women, Kids, high-quality, authentic, most competitively priced">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Abidas Shoes</title>
+</head>
+
+<body>
+	<header>
+		<img src="images/Abidas.png" alt="Abidas logo">
+		<nav class="menu">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li class="dropdown">
+					<a href="#"> Shoes </a>
+
+					<ul class="dropdown-menu">
+						<li><a href="men.html">Men</a></li>
+						<li><a href="women.html">Women</a></li>
+						<li><a href="kid.html">Kids</a></li>
+					</ul>
+				</li>
+				<li><a href="about.html">About Us</a></li>
+				<li><a href="feedback.html">Feedback</a></li>
+			</ul>
+		</nav>
+
+		<a href="AddToCart.html">
+			<img src="images/Add_to_cart.jpg" alt="cart" class="AddToCart_image">
+		</a>
+	</header>
+
+	<article>
+		<hr>
+		<h1 class="cart">Shopping Cart</h1>
+		<div id="cartItems"></div>
+		<button class="purchase-button" onclick="purchaseItems()">Purchase</button>
+
+		<script>
+			let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+			let cartContainer = document.getElementById("cartItems");
+
+			function renderCart(){
+				cartContainer.innerHTML="";
+
+				if(cart.length == 0){
+				cartContainer.innerHTML = '<p class="empty-item">Your cart is empty</p>';
+				return;
+				}
+
+				cart.forEach((item, index) => {
+					cartContainer.innerHTML += `
+				        <div class="cart-item">
+				            <img src="images/${item.image}" width="150">
+			                <h2>${item.name}</h2>
+				            <p>${item.price}</p>
+				              
+				            <button class="remove-button" onclick="removeItem(${index})">
+				                Remove
+				            </button>
+				        </div>
+			        `;
+			    });
+			}
+
+			function removeItem(index) {
+			    cart.splice(index, 1);
+			    localStorage.setItem("cart", JSON.stringify(cart));
+			    renderCart();
+			}
+
+			function purchaseItems(){
+				let cart = JSON.parse(localStorage.getItem("cart")) ||[];
+
+				if(cart.length == 0) {
+				alert("Your cart is empty");
+				return;
+			}
+
+				alert("Purchase Succesful.");
+				localStorage.removeItem("cart");
+				window.location.reload();
+			}
+
+			renderCart();
+		</script>
+	</article>
+
+	<footer>
+		<hr>
+		<div class="footer_top">
+			<div class="Contact_us">
+				<p class="contact_us">Contact Us</p>
+		        <p class="contact_us_content">
+		        	<strong>Email: </strong> haroldtingzhongqing@gmail.com<br>
+		        	chungsiangchai470@gmail.con<br>
+			        <strong>Phone: </strong> +60182026677<br>
+			        +60105938809<br>
+			        <strong>Address: </strong> Jalan Simpang Tiga, 93350 Kuching, Sarawak
+			    </p>
+			</div>
+		
+			<div class="Product">
+				<p class="product">Product</p>
+				<ul class="product_content">
+					<li><a href="men.html">Men</a></li>
+					<li><a href="women.html">Women</a></li>
+					<li><a href="kid.html">Kid</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<hr>
+
+		<div class="footer_bottom">
+			<a href="about.html" class="copyright">@Group 6|Last updated: 1//6/2026</a>
+		</div>
+	</footer>
+</body>
+</html>
